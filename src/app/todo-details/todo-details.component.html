@@ -1,1 +1,10 @@
 <p>todo-details works!</p>
+
+<article *ngIf="(todo | async) as todoItem">
+    <h2>
+        {{ todoItem.name }}
+    </h2>
+    <h3>
+        {{ todoItem.description }}
+    </h3>
+</article>
