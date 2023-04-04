@@ -11,6 +11,6 @@ import { Todo } from '../todos.service';
 })
 export class TodosCardComponent {
   @Input() todo!: Todo;
-  @Input() index!: Number;
+  @Input() id!: Number;
   constructor(){} 
 }
