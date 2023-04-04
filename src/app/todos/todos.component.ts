@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Todo, TodosService } from '../todos.service';
 
 @Component({
   selector: 'app-todos',
@@ -9,5 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent {
-
+  todos : Todo[];
+  constructor(readonly todosService: TodosService){
+    this.todos= todosService.todos;
+  }
 }
