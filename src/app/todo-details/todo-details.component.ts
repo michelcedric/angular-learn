@@ -15,7 +15,7 @@ export class TodoDetailsComponent {
   todo : Observable<Todo |undefined>;
   constructor(private todoService : TodosService, private route: ActivatedRoute){
     this.todo = route.paramMap.pipe(map(params => {
-      return this.todoService.todos[Number(params.get('index'))]
+      return this.todoService.todos.find(item=>item.id===Number(params.get('id')));
     }))
   }
 }
