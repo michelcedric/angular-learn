@@ -8,3 +8,9 @@
         {{ todoItem.description }}
     </h3>
 </article>
+
+<ul>
+    <ng-template ngFor [ngForOf]="fakeData | async" let-item let-index="index">
+        <li>{{ index + 1 }}. {{ item.name }}</li>
+    </ng-template>
+</ul>

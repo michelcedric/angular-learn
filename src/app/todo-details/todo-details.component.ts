@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Todo, TodosService } from '../todos.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
+import { FaKeData, FakeDataService } from '../fake-data.service';
 
 @Component({
   selector: 'app-todo-details',
@@ -12,10 +13,13 @@ import { Observable, map } from 'rxjs';
   styleUrls: ['./todo-details.component.css']
 })
 export class TodoDetailsComponent {
-  todo : Observable<Todo |undefined>;
-  constructor(private todoService : TodosService, private route: ActivatedRoute){
+  todo: Observable<Todo | undefined>;
+  fakeData: Observable<FaKeData[] | undefined>;
+  constructor(private todoService: TodosService, route: ActivatedRoute, readonly fakeDataService: FakeDataService) {
     this.todo = route.paramMap.pipe(map(params => {
-      return this.todoService.todos.find(item=>item.id===Number(params.get('id')));
+      return this.todoService.todos.find(item => item.id === Number(params.get('id')));
     }))
+
+    this.fakeData = this.fakeDataService.observableList;
   }
 }
